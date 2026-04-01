@@ -68,11 +68,11 @@ void test_scenarioA() {
 
     cout << "v2 = "; v2.print(); cout << endl;
     cout << "v1 = "; v1.print();
-    cout << " <-- v1 was never touched, but v1[0] is now 99!" << endl;
+    //cout << " <-- v1 was never touched, but v1[0] is now 99!" << endl;
     cout << endl;
 
-    cout << "Exiting function — both destructors will delete[] the same array..." << endl;
-    // CRASH here if Big Three not implemented
+    cout << "Exiting function ..." << endl;
+    
 }
 
 // ============================================
@@ -103,11 +103,10 @@ void test_scenarioB() {
 
     cout << "v2 = "; v2.print(); cout << endl;
     cout << "v1 = "; v1.print();
-    cout << " <-- v1 was never touched, but v1[0] is now 99!" << endl;
+  //  cout << " <-- v1 was never touched, but v1[0] is now 99!" << endl;
     cout << endl;
 
-    cout << "Exiting function — both destructors will delete[] the same array..." << endl;
-    // CRASH here if Big Three not implemented
+    cout << "Exiting function ..." << endl;
 }
 
 // ============================================

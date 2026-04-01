@@ -1,8 +1,9 @@
 CXX = g++
 CXXFLAGS = -std=c++11 -Wall -g
 
-# Target executable
+# Targets
 TARGET = demo
+TARGET_ADT = demo_adt
 
 # Source files
 SOURCES = demo.cpp Complex.cpp CustomVector.cpp
@@ -11,12 +12,16 @@ OBJECTS = $(SOURCES:.cpp=.o)
 # Headers (for dependency tracking)
 HEADERS = Complex.h CustomVector.h
 
-# Default target - build the demo
-all: $(TARGET)
+# Default target - build both demos
+all: $(TARGET) $(TARGET_ADT)
 
-# Link object files to create executable
+# Link object files to create main demo
 $(TARGET): $(OBJECTS)
 	$(CXX) $(CXXFLAGS) -o $(TARGET) $(OBJECTS)
+
+# Build ADT demo (single file, no dependencies)
+$(TARGET_ADT): demo_adt.cpp
+	$(CXX) $(CXXFLAGS) -o $(TARGET_ADT) demo_adt.cpp
 
 # Compile .cpp files to .o files
 %.o: %.cpp $(HEADERS)
@@ -24,7 +29,7 @@ $(TARGET): $(OBJECTS)
 
 # Clean up compiled files
 clean:
-	rm -f $(OBJECTS) $(TARGET)
+	rm -f $(OBJECTS) $(TARGET) $(TARGET_ADT)
 
 # Run the demo
 run: $(TARGET)
