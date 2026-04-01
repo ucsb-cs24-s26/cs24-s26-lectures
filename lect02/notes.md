@@ -1,1 +1,1 @@
-### Lecture 2: Abstract Data Types + writing custom ADTs that behave as intuitively as built-in types
+### Lecture 2: Abstract Data Types + implementing custom classes that behave intuitively 
