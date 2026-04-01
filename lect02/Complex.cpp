@@ -15,13 +15,21 @@ double Complex::getImag() const {
     return imag;
 }
 
-// TODO: Implement operator<< (
+ostream& operator<<(ostream& out, const Complex& c){
+    out<< c.getReal() << " ";
+    if(c.getImag() < 0){
+        out << "- " << -1 * c.getImag() <<"j";
+    }else{
+        out << "+ " << c.getImag() << "j";
+    }
+    return out;
+}
 
 
 // TO DO: Implement operator+ 
 // Addition of complex numbers: (a + bi) + (c + di) = (a+c) + (b+d)i
 Complex operator+(const Complex& lhs, const Complex& rhs){
     //TO DO
-    return Complex();
+    return Complex(lhs.getReal() + rhs.getReal(),  lhs.getImag() + rhs.getImag());
 }
 

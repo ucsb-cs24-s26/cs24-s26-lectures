@@ -20,23 +20,28 @@ void demoOperatorOverloading() {
     cout << "  PART 1: Operator Overloading" << endl;
     cout << "========================================" << endl;
     cout << endl;
-
+     
     // Create complex numbers
-    Complex c1(3, 4);   // 3 + 4j
+    Complex c;  //  0 + 0j
+    Complex c1(3, 4);   // 3 + 4j --> Implicitly Calling a function -- constructor
     Complex c2(1, 2);   // 1 + 2j
-    // cout << c1;
-    // cout << "c1 = " << c1 << endl;
-    // cout << "c2 = " << c2 << endl;
+    cout << "c1 = " << c1 << endl;
+    cout << "c2 = " << c2 << endl;
     cout << endl;
     
     // Test operator+
-    // Complex c3 = c1 + c2;
-    // cout << "c1 + c2 = " << c3 << endl;
-    // cout << endl;
+    Complex c3 = c1 + c2;  // (3+1) + (4+2) j
+
+                           // Complex c3 = operator+(c1, c2);
+                           //            = c1.operator+(c2);
+                           // v[0] = 5;
+
+    cout << "c1 + c2 = " << c3 << endl;
+    cout << endl;
 
     // // Test chaining
-    // cout << "Chaining test: " << c1 << " + " << c2 << " = " << c3 << endl;
-    // cout << endl;
+    cout << "Chaining test: " << c1 << " + " << c2 << " = " << c3 << endl;
+    cout << endl;
 
     cout << endl;
 }
