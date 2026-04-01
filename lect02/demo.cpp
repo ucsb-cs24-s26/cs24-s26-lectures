@@ -24,26 +24,20 @@ void demoOperatorOverloading() {
     // Create complex numbers
     Complex c1(3, 4);   // 3 + 4j
     Complex c2(1, 2);   // 1 + 2j
-    cout << c1;
-    cout << "c1 = " << c1 << endl;
-    cout << "c2 = " << c2 << endl;
+    // cout << c1;
+    // cout << "c1 = " << c1 << endl;
+    // cout << "c2 = " << c2 << endl;
     cout << endl;
     
     // Test operator+
-    Complex c3 = c1 + c2;
-    cout << "c1 + c2 = " << c3 << endl;
-    cout << endl;
+    // Complex c3 = c1 + c2;
+    // cout << "c1 + c2 = " << c3 << endl;
+    // cout << endl;
 
-    // Test chaining
-    cout << "Chaining test: " << c1 << " + " << c2 << " = " << c3 << endl;
-    cout << endl;
+    // // Test chaining
+    // cout << "Chaining test: " << c1 << " + " << c2 << " = " << c3 << endl;
+    // cout << endl;
 
-    // Test operator==
-    if (c1 == c2) {
-        cout << "c1 == c2" << endl;
-    } else {
-        cout << "c1 != c2" << endl;
-    }
     cout << endl;
 }
 
