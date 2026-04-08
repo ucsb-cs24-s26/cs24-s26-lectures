@@ -5,6 +5,43 @@ CustomVector::CustomVector(size_t initialCapacity) : data(nullptr), size(0), cap
     data = new int[capacity];
 }
 
+// ============================================
+// THE BIG THREE - Destructor, copy constructor, copy assignment operator
+// ============================================
+
+// Destructor - Clean up dynamic memory
+CustomVector::~CustomVector() {
+    delete[] data;
+}
+
+// SHALLOW copy constructor — TODO: live-code deep copy
+CustomVector::CustomVector(const CustomVector& other)
+    : data(nullptr), size(other.size), capacity(other.capacity) {
+    data = new int[capacity];
+    std::copy(other.data, other.data + size, data);
+}
+
+// SHALLOW copy assignment — TODO: live-code deep copy
+CustomVector& CustomVector::operator=(const CustomVector& other) {
+    if(this == &other){
+        return *this;
+    }
+   
+// B     if(*this == other){ // would need to overload the == operator for this to work
+//         return *this;
+//     }
+    delete [] data; // delete existing data from the heap
+    size = other.size;
+    capacity = other.capacity;
+    data = new int[capacity];
+    std::copy(other.data, other.data + size, data);
+
+
+    return *this;
+}
+
+
+
 // Add element to end
 void CustomVector::push_back(int val) {
     // Check if we need more space
@@ -70,34 +107,4 @@ void CustomVector::resize() {
     // Update pointer
     data = newData;
 }
-
-// ============================================
-// THE BIG THREE - INSTRUCTOR WILL LIVE-CODE!
-// ============================================
-
-// Destructor - Clean up dynamic memory
-// TODO: Instructor will implement this LIVE!
-//
-// Key teaching points:
-// 1. We MUST delete[] the array we allocated in constructor
-// 2. If we don't, we get a MEMORY LEAK
-// 3. Use delete[] (not delete) for arrays
-// Destructor — frees the heap array
-CustomVector::~CustomVector() {
-    delete[] data;
-}
-
-// SHALLOW copy constructor — TODO: live-code deep copy
-CustomVector::CustomVector(const CustomVector& other)
-    : data(other.data), size(other.size), capacity(other.capacity) {
-}
-
-// SHALLOW copy assignment — TODO: live-code deep copy
-CustomVector& CustomVector::operator=(const CustomVector& other) {
-    data = other.data;
-    size = other.size;
-    capacity = other.capacity;
-    return *this;
-}
-
 

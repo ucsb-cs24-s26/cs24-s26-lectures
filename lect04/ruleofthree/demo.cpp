@@ -99,6 +99,7 @@ void test_scenarioB() {
 
     cout << "Executing: v2 = v1;" << endl;
     v2 = v1;   // default copy assignment — shallow copy, v2's old array leaked
+    // v1 = v1; 
 
     cout << "v2 = "; v2.print(); cout << endl;
     cout << endl;
