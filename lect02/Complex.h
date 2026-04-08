@@ -38,7 +38,9 @@ ostream& operator<<(ostream& out, const Complex& c);  // cout << c1 << c2;
                                                       // operator<<(cout, c1)     << c2;
                                                       // cout << c2 <--- note operator<<(cout, c1)
                                                       //                 must return ostream type 
-
+// If you implement with void return type
+// chaining will not be possible.
+// void operator<<(ostream& out, const Complex& c);
 // TODO: Implement operator+ (students do this in Activity 1B!)
 // This allows: Complex c3 = c1 + c2;
 Complex operator+(const Complex& lhs, const Complex& rhs);
