@@ -18,6 +18,9 @@ public:
     void insert(int key);
     void clear();
     void erase(int key);
+    class iterator;
+    iterator begin();
+    iterator end();
 
 private:
     struct Node{
@@ -34,9 +37,49 @@ private:
     void printInorder(Node* r) const;
     void insert(int value, Node *r);
     void linearize(Node* r, vector<int>& result) const;
-    Node* successor(Node* r);
-    Node* getmin(Node* r);
+    static Node* successor(Node* r);
+    static Node* getmin(Node* r);
 };
+
+class bst::iterator{
+    public:
+    iterator(Node* p = nullptr): curr(p){}
+    // Kinds of operations on an iterator , == , !=, *, ++(pre and post)
+    bool operator==(const iterator& rhs){
+        return curr == rhs.curr;
+    }
+
+    bool operator!=(const iterator& rhs){
+        return curr != rhs.curr;
+    }
+
+    int operator*(){
+        return curr->data;
+    }
+
+    // Options: A. *this  B. curr.data  C. curr->data D. All of the above
+    //preincrement
+    iterator& operator++(){
+        curr = bst::successor(curr);
+        return *this;
+    }
+
+    // //postincrement
+    // iterator operator++(){
+    //     return iterator();
+    // }
+    
+
+    private:
+        Node* curr;
+};
+
+bst::iterator bst::begin(){
+    return iterator(getmin(root));
+}
+bst::iterator bst::end(){
+    return iterator(nullptr);
+}
 
 
 
@@ -128,6 +171,17 @@ int main(){
     cout << "print the tree in order: ";
     b.printInorder();
     cout << endl;
+    cout << "Iterating through my custom bst" << endl;
+    for(auto e : b){
+        cout << e << " ";
+    }
+    cout << endl;
+    // Code below doesn't work because Node is private and the rest are private helper functons.
+    // Node* p = b.getmin();
+    // while(p){
+    //     cout << p->data << " ";
+    //     p = b.successor(p);
+    // }
 
 
     return 0;
