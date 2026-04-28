@@ -39,16 +39,46 @@ vector<Patient> waiting_room = {
     {"Grace",  2,  7},   // Urgent,    arrived at t=7
 };
 
+class compareBySeverity{
+    public:
+        bool operator()(const Patient& p1, const Patient& p2){
+            if(p1.severity == p2.severity){
+                // tie breaking logic
+                return p1.arrivalTime > p2.arrivalTime;
+            }
+            return p1.severity > p2.severity;
+        }
+};
+
+using ERQueue = priority_queue<Patient, vector<Patient>, compareBySeverity>;
+ERQueue buildTriageQueue(vector<Patient> input){
+    ERQueue erq;
+    for(auto e : input){
+        erq.push(e);
+    }
+    return erq;
+}
+string peekNext(ERQueue& erq){
+    if(erq.empty()) return "";
+    return erq.top().name;
+}
+
+Patient treatNext(ERQueue & erq){
+    Patient result = erq.top();
+    erq.pop();
+    return result;
+}
+
 int main() {
-    // ERQueue pq = buildTriageQueue(waiting_room);
+    ERQueue pq = buildTriageQueue(waiting_room);
 
-    // cout << "=== Who is next? ===" << endl;
-    // cout << peekNext(pq) << endl;           
+    cout << "=== Who is next? ===" << endl;
+    cout << peekNext(pq) << endl;      //  Bob    (top!)
 
-    // cout << "\n=== Treat next ===" << endl;
-    // Patient p = treatNext(pq);
-    // cout << p.name << " (severity " << p.severity << ")" << endl; 
-    // cout << peekNext(pq) << endl;           
+    cout << "\n=== Treat next ===" << endl;
+    Patient p = treatNext(pq);  
+    cout << p.name << " (severity " << p.severity << ")" << endl;  // Bob (1)
+    cout << peekNext(pq) << endl;        // Eve   
 
     // cout << "\n=== Full treatment order ===" << endl;
     // ERQueue pq2 = buildTriageQueue(waiting_room);
