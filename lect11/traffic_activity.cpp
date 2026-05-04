@@ -9,8 +9,9 @@ using namespace std;
 /*
  * Activity: Web Traffic Analysis
  *
- * You're a software engineer at Amazon. Here's a log of IP addresses
- * that visited the site. Your boss wants answers.
+ * You're a software engineer at Amazon. 
+ * Here's a log of IP addresses that visited the site. 
+ * Your boss wants answers.
  */
 
 vector<string> traffic_log = {
@@ -29,8 +30,11 @@ vector<string> traffic_log = {
 // ============================================================
 int uniqueVisitors(const vector<string>& log) {
     // TODO: Your code here
-
-    return 42;
+    unordered_set<string> unique_ips;
+    for (auto ip : log){
+        unique_ips.insert(ip);
+    }
+    return unique_ips.size();
 }
 
 // ============================================================
@@ -45,7 +49,12 @@ int uniqueVisitors(const vector<string>& log) {
 // ============================================================
 unordered_map<string, int> countVisits(const vector<string>& log) {
     // TODO: Your code here
-    return {{"0.0.0.0" , 1}};
+    unordered_map<string, int> ipcount;
+    ipcount["0.0.0.0"] = 1 ; // inserts the key '0.0.0.0' with value 1
+    for (auto ip : log){
+        ipcount[ip]++; // insert and update !! 
+    }
+    return ipcount;
 }
 
 

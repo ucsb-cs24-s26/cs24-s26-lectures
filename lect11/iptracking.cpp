@@ -37,13 +37,13 @@ int main() {
     // --- Show before derivation ---
 
     // Run 1: uniform random IPs — chains stay short, O(1) in practice
-    run("Uniform random IPs (deterministic hash)", true, false, m, n);
+    // run("Uniform random IPs (deterministic hash)", true, false, m, n);
 
     // Run 2: adversarial IPs (multiples of m) — all collide into bucket 0, O(n) search
-    // run("Adversarial IPs, deterministic hash  [ALL COLLIDE]", false, false, m, n);
+    //run("Adversarial IPs, deterministic hash  [ALL COLLIDE]", false, false, m, n);
 
     // --- Uncomment after derivation: randomized seed defeats the adversarial input ---
-    // run("Adversarial IPs, randomized seed     [DEFENDED]", false, true, m, n);
+    run("Adversarial IPs, randomized seed     [DEFENDED]", false, true, m, n);
 
     return 0;
 }

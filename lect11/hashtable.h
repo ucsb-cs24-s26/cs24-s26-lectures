@@ -21,7 +21,7 @@ private:
     uint32_t seed; // Random seed — 0 means deterministic
 
     size_t hash(uint32_t key) const {
-        return key % m; 
+        return (key ^ seed) % m; 
     }
 
 public:
