@@ -44,6 +44,9 @@ adjlist = { {2},
             {5},
             {}
 }
+Space complexity = O(n + m )
+n = number of vertices 
+m = number of edges
 
 
 Weighted graph
